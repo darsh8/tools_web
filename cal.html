@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算器 - 纯HTML小工具站</title>
+    <link rel="stylesheet" href="css/cal.css">
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-home">← 返回工具列表</a>
+
+        <header>
+            <h1><span>🧮</span> 纯HTML计算器</h1>
+            <p class="subtitle">一个功能齐全的计算器，支持基本运算、括号和复杂表达式计算</p>
+        </header>
+
+        <div class="calculator">
+            <div class="display">
+                <div class="expression" id="expression">0</div>
+                <div class="result" id="result">0</div>
+            </div>
+
+            <div class="buttons">
+                <button class="clear" data-action="clear-all">C</button>
+                <button class="clear" data-action="clear-entry">CE</button>
+                <button class="operator" data-value="%">%</button>
+                <button class="operator" data-value="/">÷</button>
+
+                <button data-value="7">7</button>
+                <button data-value="8">8</button>
+                <button data-value="9">9</button>
+                <button class="operator" data-value="*">×</button>
+
+                <button data-value="4">4</button>
+                <button data-value="5">5</button>
+                <button data-value="6">6</button>
+                <button class="operator" data-value="-">-</button>
+
+                <button data-value="1">1</button>
+                <button data-value="2">2</button>
+                <button data-value="3">3</button>
+                <button class="operator" data-value="+">+</button>
+
+                <button class="zero" data-value="0">0</button>
+                <button data-value=".">.</button>
+                <button class="equals" data-action="calculate">=</button>
+            </div>
+
+            <div class="extra-buttons">
+                <button data-value="(">(</button>
+                <button data-value=")">)</button>
+                <button data-value="^">^</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2023 纯HTML小工具站 | 计算器工具 | 所有计算均在本地浏览器中完成，无数据上传</p>
+            <p class="footer-note"><strong>使用提示：</strong> 支持加减乘除、百分比、括号和幂运算(^)</p>
+        </footer>
+    </div>
+
+    <script src="js/cal.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>密码生成器 - 纯HTML小工具站</title>
+    <link rel="stylesheet" href="css/pwd_gen.css">
+</head>
+<body>
+    <div class="notification" id="notification"></div>
+
+    <div class="container">
+        <a href="index.html" class="back-home">← 返回工具列表</a>
+
+        <header>
+            <h1><span>🔐</span> 密码生成器</h1>
+            <p class="subtitle">生成高强度、随机的安全密码，可自定义长度和字符类型</p>
+        </header>
+
+        <div class="password-generator">
+            <div class="password-display">
+                <div class="password-text" id="password">点击"生成密码"按钮</div>
+                <button class="copy-btn" onclick="copyPassword()">复制密码</button>
+            </div>
+
+            <div class="controls">
+                <div class="control-group">
+                    <div class="control-title"><span>⚙️</span> 密码设置</div>
+
+                    <div class="length-control">
+                        <div class="length-label">
+                            <span>密码长度</span>
+                            <span class="length-value" id="length-value">12</span>
+                        </div>
+                        <input type="range" id="length-slider" min="6" max="32" value="12" oninput="updateLengthValue()">
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="uppercase" checked>
+                        <label for="uppercase">包含大写字母 (A-Z)</label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="lowercase" checked>
+                        <label for="lowercase">包含小写字母 (a-z)</label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="numbers" checked>
+                        <label for="numbers">包含数字 (0-9)</label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="symbols" checked>
+                        <label for="symbols">包含特殊符号 (!@#$%^&*)</label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="exclude-similar">
+                        <label for="exclude-similar">排除相似字符 (i, l, 1, L, o, 0, O)</label>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <div class="control-title"><span>📊</span> 密码强度</div>
+
+                    <div class="strength-meter">
+                        <div class="strength-title">密码强度:</div>
+                        <div class="strength-bar">
+                            <div class="strength-fill" id="strength-fill"></div>
+                        </div>
+                        <div class="strength-text" id="strength-text">中等</div>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <div class="strength-title">密码提示:</div>
+                        <ul style="padding-left: 20px; color: #666; font-size: 0.9rem;">
+                            <li>使用至少12个字符</li>
+                            <li>混合字母、数字和符号</li>
+                            <li>避免使用个人信息</li>
+                            <li>定期更换密码</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <button class="generate-btn" onclick="generatePassword()">生成新密码</button>
+
+            <div class="password-history">
+                <div class="history-title"><span>📋</span> 密码历史 (最近5个)</div>
+                <div class="history-list" id="history-list">
+                    <!-- 密码历史将在这里动态生成 -->
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2023 纯HTML小工具站 | 密码生成器 | 所有密码均在本地生成，不会被发送到任何服务器</p>
+            <p style="margin-top: 10px;"><strong>安全提示：</strong> 请勿重复使用密码，建议定期更换</p>
+        </footer>
+    </div>
+
+    <script src="js/pwd_gen.js"></script>
+</body>
+</html>

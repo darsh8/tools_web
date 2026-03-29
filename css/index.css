@@ -1,0 +1,318 @@
+/* index.css - 兼容 Firefox 和 Chrome 的样式 */
+
+/* 1. 重置和基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+}
+
+body {
+    background: #f0f4f8; /* 使用纯色背景替代渐变，提高兼容性 */
+    background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%); /* 渐进增强 */
+    color: #334155;
+    line-height: 1.5;
+    min-height: 100vh;
+    padding: 16px;
+}
+
+/* 容器 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 2. Header 样式 - 避免使用 backdrop-filter */
+header {
+    text-align: center;
+    margin-bottom: 32px;
+    padding: 24px 20px;
+    background: white; /* 使用纯色背景替代半透明 */
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e2e8f0; /* 使用实线边框 */
+}
+
+/* 3. 标题样式 - 避免使用 background-clip: text */
+h1 {
+    color: #3b82f6; /* 使用纯色作为主要颜色 */
+    margin-bottom: 8px;
+    font-size: 2rem;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+}
+
+/* 使用伪元素创建下划线渐变效果替代文字渐变 */
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #3b82f6, #10b981);
+    border-radius: 2px;
+}
+
+.subtitle {
+    color: #64748b;
+    font-size: 0.95rem;
+    max-width: 600px;
+    margin: 0 auto 20px;
+}
+
+/* 4. 特性展示 - 避免使用 gap 属性 */
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 16px;
+    margin-left: -6px; /* 负边距技巧替代 gap */
+    margin-right: -6px;
+}
+
+.feature-intro {
+    background: rgba(59, 130, 246, 0.1);
+    padding: 8px 16px;
+    border-radius: 20px;
+    display: flex;
+    margin: 6px; /* 替代 gap */
+    font-size: 0.85rem;
+    color: #3b82f6;
+    font-weight: 500;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.feature-intro-text {
+    display: flex;
+    gap: 0.25rem;
+    flex-direction: column;
+}
+
+/* 5. 工具网格 - 使用更兼容的布局方案 */
+.tools-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px 40px -10px; /* 负边距技巧创建间距 */
+}
+
+.tool-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: all 0.25s ease; /* 使用简单动画 */
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    border: 1px solid #e2e8f0;
+    position: relative;
+    overflow: hidden;
+    margin: 10px; /* 替代 gap */
+    flex: 1 1 260px; /* 弹性基础宽度，替代 minmax */
+    max-width: calc(33.333% - 20px); /* 三列布局 */
+}
+
+/* 悬停效果 */
+.tool-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border-color: #3b82f6;
+}
+
+/* 顶部装饰条 */
+.tool-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #3b82f6, #10b981);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tool-card:hover::before {
+    opacity: 1;
+}
+
+.tool-icon {
+    font-size: 2.2rem;
+    margin-bottom: 16px;
+    display: block;
+    transition: transform 0.3s;
+}
+
+.tool-card:hover .tool-icon {
+    transform: scale(1.1);
+}
+
+.tool-title {
+    color: #1e293b;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.tool-description {
+    color: #64748b;
+    margin-bottom: 18px;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.tool-link {
+    display: inline-block;
+    background: #3b82f6; /* 纯色背景替代渐变 */
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    width: auto;
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
+    border: none;
+    cursor: pointer;
+}
+
+.tool-link:hover {
+    background: #2563eb; /* 悬停时变深 */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* 6. 页脚样式 */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #64748b;
+    font-size: 0.85rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+}
+
+/* 7. 响应式设计 */
+/* 平板设备 */
+@media (max-width: 992px) {
+    .tool-card {
+        max-width: calc(50% - 20px); /* 两列布局 */
+    }
+}
+
+/* 移动设备 */
+@media (max-width: 768px) {
+    body {
+        padding: 12px;
+    }
+
+    .tools-grid {
+        margin: 0 -8px 32px -8px;
+    }
+
+    .tool-card {
+        flex: 1 1 100%; /* 单列布局 */
+        max-width: calc(100% - 16px);
+        margin: 8px;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    header {
+        padding: 20px 16px;
+        margin-bottom: 24px;
+    }
+
+    .features {
+        margin-left: -4px;
+        margin-right: -4px;
+    }
+
+    .feature-intro {
+        margin: 4px;
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}
+
+/* 8. 动画效果 - 使用兼容性更好的写法 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tool-card {
+    animation: fadeIn 0.4s ease-out forwards;
+    animation-fill-mode: both; /* 确保动画结束后保持状态 */
+}
+
+/* 为卡片添加延迟动画 */
+.tool-card:nth-child(1) { animation-delay: 0.1s; }
+.tool-card:nth-child(2) { animation-delay: 0.2s; }
+.tool-card:nth-child(3) { animation-delay: 0.3s; }
+.tool-card:nth-child(4) { animation-delay: 0.4s; }
+.tool-card:nth-child(5) { animation-delay: 0.5s; }
+.tool-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* 9. 增强兼容性的备用方案 */
+/* 对于不支持flexbox的旧浏览器（极少数情况） */
+.no-flexbox .tools-grid {
+    display: block;
+    overflow: hidden;
+}
+
+.no-flexbox .tool-card {
+    float: left;
+    width: calc(33.333% - 20px);
+    margin: 10px;
+}
+
+@media (max-width: 992px) {
+    .no-flexbox .tool-card {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .no-flexbox .tool-card {
+        width: calc(100% - 20px);
+        float: none;
+        margin: 10px auto;
+    }
+}
+
+/* 10. 打印样式 */
+@media print {
+    body {
+        background: white !important;
+        color: black !important;
+        padding: 0;
+    }
+
+    .tool-card {
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+        break-inside: avoid; /* 防止分页时断开 */
+    }
+
+    .tool-link, .feature-intro {
+        display: none !important;
+    }
+}

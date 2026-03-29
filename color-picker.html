@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>颜色选择器 - 纯HTML小工具站</title>
+    <link rel="stylesheet" href="css/color-picker.css">
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-home">← 返回工具列表</a>
+
+        <header>
+            <h1><span>🎨</span> 颜色选择器</h1>
+            <p class="subtitle">可视化选择颜色，获取HEX、RGB、HSL等多种格式的颜色值</p>
+        </header>
+
+        <div class="color-picker">
+            <div class="color-selector">
+                <div class="color-inputs">
+                    <div class="control-group">
+                        <div class="control-title"><span>🌈</span> 选择颜色</div>
+                        <input type="color" id="color-picker" value="#3498db" oninput="updateColorFromPicker()">
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-title"><span>🔢</span> RGB 值</div>
+
+                        <div class="range-control">
+                            <label for="red">红色 (R)</label>
+                            <input type="range" id="red" min="0" max="255" value="52" oninput="updateColorFromRGB()">
+                            <div class="range-value">
+                                <span>0</span>
+                                <span id="red-value">52</span>
+                                <span>255</span>
+                            </div>
+                        </div>
+
+                        <div class="range-control">
+                            <label for="green">绿色 (G)</label>
+                            <input type="range" id="green" min="0" max="255" value="152" oninput="updateColorFromRGB()">
+                            <div class="range-value">
+                                <span>0</span>
+                                <span id="green-value">152</span>
+                                <span>255</span>
+                            </div>
+                        </div>
+
+                        <div class="range-control">
+                            <label for="blue">蓝色 (B)</label>
+                            <input type="range" id="blue" min="0" max="255" value="219" oninput="updateColorFromRGB()">
+                            <div class="range-value">
+                                <span>0</span>
+                                <span id="blue-value">219</span>
+                                <span>255</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="color-preview">
+                    <div class="color-display" id="color-display"></div>
+                    <div class="color-value" id="color-hex">#3498db</div>
+                </div>
+            </div>
+
+            <div class="color-formats">
+                <div class="format-box">
+                    <div class="format-title">HEX 颜色值</div>
+                    <div class="format-value" id="format-hex">#3498db</div>
+                    <button class="copy-btn" onclick="copyFormat('hex')">复制 HEX</button>
+                </div>
+
+                <div class="format-box">
+                    <div class="format-title">RGB 颜色值</div>
+                    <div class="format-value" id="format-rgb">rgb(52, 152, 219)</div>
+                    <button class="copy-btn" onclick="copyFormat('rgb')">复制 RGB</button>
+                </div>
+
+                <div class="format-box">
+                    <div class="format-title">HSL 颜色值</div>
+                    <div class="format-value" id="format-hsl">hsl(204, 70%, 53%)</div>
+                    <button class="copy-btn" onclick="copyFormat('hsl')">复制 HSL</button>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="action-btn random-btn" onclick="generateRandomColor()">随机颜色</button>
+                <button class="action-btn reset-btn" onclick="resetColor()">重置颜色</button>
+            </div>
+
+            <div class="color-palette">
+                <div class="palette-title"><span>🎨</span> 常用颜色</div>
+                <div class="palette-grid" id="palette-grid">
+                    <!-- 颜色块将在这里动态生成 -->
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2023 纯HTML小工具站 | 颜色选择器 | 所有颜色操作均在本地完成</p>
+            <p style="margin-top: 10px;"><strong>提示：</strong> 点击颜色值可快速复制到剪贴板</p>
+        </footer>
+    </div>
+
+    <script src="js/color-picker.js"></script>
+</body>
+</html>
